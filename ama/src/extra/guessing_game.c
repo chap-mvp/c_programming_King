@@ -10,7 +10,7 @@ int numGen()
     static int numberToGuess;
     // Choose the range accordingly
     numberToGuess = (rand() % 10) + 1;
-    printf("The generated number is %d\n", numberToGuess);
+    // printf("The generated number is %d\n", numberToGuess);
     return numberToGuess;
 }
 
