@@ -2,15 +2,19 @@
 #include <time.h>
 #include <stdlib.h>
 
+
+// function to generate a number
 int numGen()
 {
     srand(time(NULL));
     static int numberToGuess;
+    // Choose the range accordingly
     numberToGuess = (rand() % 10) + 1;
     printf("The generated number is %d\n", numberToGuess);
     return numberToGuess;
 }
 
+// function to take user input
 int userInput()
 {
 
@@ -21,6 +25,7 @@ int userInput()
     return guessNumber;
 }
 
+// function to call and evaluate user input
 int numberCheck()
 {
     int num = -1;
@@ -48,6 +53,7 @@ int numberCheck()
     
 }
 
+// main to start the game
 int main()
 {
     numberCheck();
