@@ -15,10 +15,10 @@ tax due.
 
 #include <stdio.h>
 
-float dueTax(float income) {
-    float tax;
-    float fee;
-    float totalPayment;
+double dueTax(double income) {
+    double tax = 0;
+    double fee = 0;
+    double totalPayment;
     if (income < 750) {
         totalPayment = 0;        
     }
@@ -42,12 +42,13 @@ float dueTax(float income) {
         fee = 230;
         totalPayment = fee + (income - 7000) * 0.06;
     }
-    printf("You have to pay %.2f in income tax.", totalPayment);
+    printf("You have to pay $%.2lf in income tax, with $%.2lf fee", totalPayment, fee);
 }
 
 int main() {
-    float income;
+    double income;
     printf("How much do you make?");
-    scanf("%.2f", &income);
+    scanf("%lf", &income);
+    printf("%.2lf", income);
     dueTax(income);
 }

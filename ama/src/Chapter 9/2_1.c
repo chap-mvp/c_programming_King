@@ -2,51 +2,38 @@
 
 int selection_sort(int n, int a[])
 {
-
-    for (int i = 0; i < n; i++)
+    if (n <= 1)
     {
-        printf("[%d] ", a[i]);
+        return 0;
     }
 
-    printf("\n");
+    int t = 0;
+    int max = 0;
 
-    int temp = 0;
-    int max = a[0];
-
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
-        if (max < a[i])
+        if (a[max] < a[i])
         {
-            printf("%d vs %d\n", max, a[n - 1]);
-            max = a[i];
-            a[i] = a[n-1];
-            a[n-1] = max;
-            printf("%d and %d swapped!\n", a[i], a[n-1]);
-
+            max = i;
         }
-        selection_sort(n -= 1, a);
     }
 
+    t = a[max];
+    a[max] = a[n - 1];
+    a[n - 1] = t;
 
-
-    for (int i = 0; i < n; i++)
-    {
-        printf("[%d] ", a[i]);
-    }
-
-    printf("\n");
+    selection_sort(n - 1, a);
 }
 
 int main()
 {
-
+#
     int n;
 
     printf("#.? ");
     scanf("%d", &n);
 
     int a[n];
-
     for (int i = 0; i < n; i++)
     {
         printf("[%d.] ", i + 1);
@@ -55,7 +42,7 @@ int main()
 
     selection_sort(n, a);
 
-        for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         printf("[%d] ", a[i]);
     }
