@@ -19,12 +19,12 @@ int selection_sort(int n, int a[])
         {
             printf("%d vs %d\n", max, a[n - 1]);
             max = a[i];
-            a[i] = a[n];
-            a[n] = max;
+            a[i] = a[n-1];
+            a[n-1] = max;
+            printf("%d and %d swapped!\n", a[i], a[n-1]);
 
-            printf("%d and %d swapped!\n", a[i], a[n]);
         }
-
+        selection_sort(n -= 1, a);
     }
 
 
@@ -54,4 +54,9 @@ int main()
     }
 
     selection_sort(n, a);
+
+        for (int i = 0; i < n; i++)
+    {
+        printf("[%d] ", a[i]);
+    }
 }
