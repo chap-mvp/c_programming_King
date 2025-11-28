@@ -1,10 +1,9 @@
 #include <stdio.h>
-
-int selection_sort(int n, int a[n])
+int n;
+int selection_sort(int a[n])
 {
 
     int max = a[0];
-
 
     for (int i = 0; i < n; i++)
     {
@@ -13,14 +12,14 @@ int selection_sort(int n, int a[n])
             max = a[i];
             a[i] = a[n];
             a[n] = max;
-            selection_sort(n - 1, *a[n]);
+            selection_sort(n - 1, a[n - 1]);
         }
     }
 }
 
 int main()
 {
-    int n;
+
     printf("How many Elements does your array have? ");
     scanf("%d", &n);
 
@@ -35,9 +34,8 @@ int main()
     {
         printf("[%d] ", a[i]);
     }
-    selection_sort(n, *a[n]);
+    selection_sort(n, a[n]);
 }
-
 
 /*
 In one state, single residents are subject to the following income tax:
