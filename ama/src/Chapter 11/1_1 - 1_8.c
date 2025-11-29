@@ -169,4 +169,5 @@ int split_date_starter()
 
 int main()
 {
+    split_date_starter();
 }
