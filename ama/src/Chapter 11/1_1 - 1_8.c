@@ -72,7 +72,6 @@ void find_two_largest(int n, int a[n], int *largest, int *second_largest)
             max = i;
         }
     }
-
     t = a[max];
     a[max] = a[n - 1];
     a[n - 1] = t;
@@ -92,7 +91,6 @@ void find_two_largest(int n, int a[n], int *largest, int *second_largest)
             max = i;
         }
     }
-
     t = a[max];
     a[max] = a[n - 2];
     a[n - 2] = t;
@@ -167,7 +165,18 @@ int split_date_starter()
 
 /*--8.--*/
 
+/*
+Write the following function:
+int *find_largest(int a[], int n);
+When passed an array a of length n, the function will return a pointer to the array’s largest
+element.
+*/
+
+int *find_largest(int a[], int n) {
+
+}
+
 int main()
 {
-    split_date_starter();
+    
 }
