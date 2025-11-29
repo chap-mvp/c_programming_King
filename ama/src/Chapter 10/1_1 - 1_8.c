@@ -167,11 +167,6 @@ int split_date_starter()
 
 /*--8.--*/
 
-
-
-
-
-
 int main()
 {
 }
