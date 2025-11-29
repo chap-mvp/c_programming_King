@@ -530,3 +530,4 @@ int factCondensed()
 int gcdRecursive(int m, int n)
 {
     return n == 0 ? m : gcdRecursive(n, m % n);
+}
