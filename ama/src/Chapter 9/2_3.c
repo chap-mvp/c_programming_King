@@ -32,10 +32,10 @@ void generate_random_walk(char a[11][11])
 
     for (int i = 1; i < 26; i++)
     {
-        int moveUp = (y - 1 < 0) || (a[y - 1][x] != '.');
-        int moveDown = (y + 1 >= heightArray) || (a[y + 1][x] != '.');
-        int moveLeft = (x - 1 < 0) || (a[y][x - 1] != '.');
-        int moveRight = (x + 1 >= widthArray) || (a[y][x + 1] != '.');
+        int moveUp = (y - 1 < 0)                || (a[y - 1][x] != '.');
+        int moveDown = (y + 1 >= heightArray)   || (a[y + 1][x] != '.');
+        int moveLeft = (x - 1 < 0)              || (a[y][x - 1] != '.');
+        int moveRight = (x + 1 >= widthArray)   || (a[y][x + 1] != '.');
 
         if (moveUp && moveDown && moveLeft && moveRight)
             break;
