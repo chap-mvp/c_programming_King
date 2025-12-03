@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <time.h>
 // int array_maker()
 // {
 //     printf("How long should your array be?");
@@ -219,19 +220,142 @@ void find_two_largest_caller()
     printf("%d, %d", a[0], second_largest, largest);
 }
 
-int main()
-{
-    find_two_largest_caller();
-}
-
 /*--13.--*/
 
 /*--14.--*/
+bool temperature(int c, int r, int a[r][c], int key)
+{
+    int *p = &a[0][0];
+    for (int i = 0; i < r * c; i++)
+    {
+        if (*p + i == key)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+int genRandNum()
+{
+    int randGen = -15 + rand() % (35 - -15 + 1);
+    return randGen;
+}
+
+bool temperature_caller()
+{
+    srand(time(0));
+
+    int c = 24;
+    int r = 7;
+    int a[r][c];
+    for (int i = 0; i < 7; i++)
+    {
+        for (int j = 0; j < 24; j++)
+        {
+            a[i][j] = genRandNum();
+        }
+    }
+    for (int i = 0; i < 7; i++)
+    {
+        for (int j = 0; j < 24; j++)
+        {
+            printf("[%d] ", a[i][j]);
+        }
+        printf("\n");
+    }
+
+    int key;
+    printf("What Temp would you like to check? ");
+    scanf("%d", &key);
+    return temperature(c, r, a, key) ? printf("Key is included") : printf("Key not here");
+}
 
 /*--15.--*/
 
 /*--16.--*/
 
 /*--17.--*/
+int sum_two_dimensional_array(int n, const int a[][n])
+{
+    int *p = &a[0][0];
+    int sum = 0;
+    for (int i = 0; i < 2 * n; i++)
+        sum += *(p + i);
+    return sum;
+}
+
+int sum_two_dimensional_array_caller()
+{
+    int n = 9;
+    int a[][9] = {{1, 2, 3, 4, 5, 6, 7, 8, 9}, {1, 2, 3, 4, 5, 6, 7, 8, 9}};
+    printf("%d", sum_two_dimensional_array(n, a));
+}
 
 /*--18.--*/
+int evaluate_position()
+{
+    char board[8][8] = {{'K', '0', '0', '0', '0', '0', '0', '0'},
+                        {'0', '0', 'P', '0', 'N', 'R', '0', '0'},
+                        {'0', '0', 'Q', '0', '0', '0', '0', '0'},
+                        {'0', '0', '0', '0', '0', '0', 'B', '0'},
+                        {'0', '0', 'n', '0', '0', 'b', '0', '0'},
+                        {'0', '0', '0', 'r', '0', '0', '0', '0'},
+                        {'k', '0', '0', '0', '0', '0', 'p', '0'},
+                        {'0', 'q', '0', '0', '0', '0', '0', '0'}};
+    int points[64];
+    int sum = 0;
+    char *p = &board[0][0];
+
+    for (int k = 0; k < 64; k++)
+    {
+        if (*(p + k) == 'K')
+            points[k] = 11;
+
+        if (*(p + k) == 'k')
+            points[k] = -11;
+
+        if (*(p + k) == 'Q')
+            points[k] = 9;
+
+        if (*(p + k) == 'q')
+            points[k] = -9;
+
+        if (*(p + k) == 'R')
+            points[k] = 5;
+
+        if (*(p + k) == 'r')
+            points[k] = -5;
+
+        if (*(p + k) == 'B')
+            points[k] = 3;
+
+        if (*(p + k) == 'b')
+            points[k] = -3;
+
+        if (*(p + k) == 'N')
+            points[k] = 3;
+
+        if (*(p + k) == 'n')
+            points[k] = -3;
+
+        if (*(p + k) == 'P')
+            points[k] = 1;
+
+        if (*(p + k) == 'p')
+            points[k] = -1;
+
+        if (*(p + k) == '0')
+            points[k] = 0;
+
+        sum += points[k];
+    }
+
+    (sum == 0) ? printf("\nIts a draw!") : 
+    (sum < 0)  ? printf("\nBlack wins!") : printf("\nWhite wins!");
+}
+
+int main()
+{
+    evaluate_position();
+}
