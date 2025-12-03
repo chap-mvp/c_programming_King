@@ -171,9 +171,26 @@ int *find_largest(int a[], int n);
 When passed an array a of length n, the function will return a pointer to the array’s largest
 element.
 */
+int *find_largest(int n, int a[])
+{
+    int * max = &a[0];
+    for (int i = 0; i < n; i++)
+    {
+        if (*max < a[i])
+        {
+            max = &a[i];
+            printf("%d\n", max);
+        }
+    }
+    printf("%d", *max);
+    return max;
+}
 
-int *find_largest(int a[], int n) {
-
+int find_largest_request() {
+    int a[] = {7, 5, 2, 1, 3, 8, 9, 4, 10, 9};
+    int n = sizeof(a) / sizeof(a[0]);
+    int *p = find_largest(n, a);
+    printf("\nPOINTER: %d", *p);
 }
 
 int main()
