@@ -19,7 +19,7 @@ bool reverse_message(int n, char message[n])
             if (message[i] == *(p + j))
                 clean_message_counter++;
 
-    char clean_message[clean_message_counter];
+    char w_message[clean_message_counter];
 
     for (int i = 0; i < clean_message_counter; i++)
         for (int j = 0; j < n; j++)
@@ -27,14 +27,14 @@ bool reverse_message(int n, char message[n])
                 if (message[i] != *(p + k))
                     continue;
                 else
-                    clean_message[i] = message[j];
+                    w_message[i] = message[j];
 
     for (int i = 0; i < n; i++)
         if (message[i] != message[n - i])
             return false;
 
     for (int i = 0; i < n; i++)
-        reverse_message[i] = clean_message[n - i];
+        reverse_message[i] = w_message[n - i];
 
     return true;
 }
