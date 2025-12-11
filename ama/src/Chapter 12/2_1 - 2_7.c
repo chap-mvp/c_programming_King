@@ -19,7 +19,7 @@ bool reverse_message(int n, char message[n])
             if (message[i] == *(p + j))
                 clean_message_counter++;
 
-    char w_message[clean_message_counter];
+    char clean_message[clean_message_counter];
 
     for (int i = 0; i < clean_message_counter; i++)
         for (int j = 0; j < n; j++)
@@ -27,14 +27,14 @@ bool reverse_message(int n, char message[n])
                 if (message[i] != *(p + k))
                     continue;
                 else
-                    w_message[i] = message[j];
+                    clean_message[i] = message[j];
 
     for (int i = 0; i < n; i++)
         if (message[i] != message[n - i])
             return false;
 
     for (int i = 0; i < n; i++)
-        reverse_message[i] = w_message[n - i];
+        reverse_message[i] = clean_message[n - i];
 
     return true;
 }
@@ -46,13 +46,12 @@ void reverse_message_caller()
     char message[] = {"I am human"};
     int i = 0;
 
-    // for (int i = 0; i < n; i++)
-    //     while (getchar() != '\n')
-    //         message[i] = getchar();
-    //     i++;
+    for (int i = 0; i < n; i++)
+        while (message[i] = getchar() != '\n')
+            i++;
 
     for (int i = 0; i < n; i++)
-        printf("%c", message[i]);
+        printf("%d", message[i]);
 
     // reverse_message(n, message) ? printf("Its a palindrome!") : printf("Its not a palindrome!");
 }
@@ -63,3 +62,4 @@ int main()
 }
 
 /*--5.--*/
+
