@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
+#define PI 3.14159
 
 // a)
 typedef struct imaginary_numbers
@@ -396,7 +397,7 @@ struct point
     int x, y;
 };
 
-struct rectangle
+struct rectangle // first = {12, 13, 14, 15}
 {
     struct point top_left;
     struct point bot_right;
@@ -436,7 +437,7 @@ bool point_check(int x, int y, struct rectangle new_coordinates)
     return 0;
 }
 
-int main()
+int task_ten()
 {
     int tx, ty, bx, by;
 
@@ -467,4 +468,97 @@ int main()
     scanf("%d, %d", &x, &y);
 
     point_check(x, y, new_coordinates) ? printf("Inside!") : printf("Not inside");
+}
+
+/*--11--*/
+
+// struct
+// {
+//     double a;
+//     union
+//     {
+//         char b[4];
+//         double c;
+//         int d;
+//     } e;
+//     char f[4];
+// } s;
+
+// 17 (8 + 8 + 1)
+
+/*--12--*/
+
+// union
+// {
+//     double a;
+//     struct
+//     {
+//         char b[4];
+//         double c;
+//         int d;
+//     } e;
+//     char f[4];
+// } u;
+
+// 13 (1 + 8 + 4)
+
+/*--13--*/
+
+struct shape
+{
+    int shape_kind;      /* RECTANGLE or CIRCLE */
+    struct point center; /* coordinates of center */
+    union
+    {
+        struct
+        {
+            int height, width;
+        } rectangle;
+        struct
+        {
+            int radius;
+        } circle;
+    } u;
+} s;
+
+// (a) s.shape_kind = RECTANGLE; ✓ -> s.shape_kind = 'RECTANGLE';
+// (b) s.center.x = 10;          ✓
+// (c) s.height = 25;            ✗ -> s.u.rectangle.height = 25;
+// (d) s.u.rectangle.width = 8;  ✓
+// (e) s.u.circle = 5;           ✗ -> s.u.circle.radius = 5;
+// (f) s.u.radius = 5;           ✗ -> no circle tag!
+
+/*--14--*/
+
+int area_calc(int comp)
+{
+    s.shape_kind = comp;
+
+    if (s.shape_kind == 0)
+    {
+        printf("Height: ");
+        scanf("%d", &s.u.rectangle.height);
+        printf("Width: ");
+        scanf("%d", &s.u.rectangle.width);
+    }
+    if (s.shape_kind == 1)
+    {
+        printf("Radius: ");
+        scanf("%d", &s.u.circle.radius);
+    }
+
+    int area;
+    if (s.shape_kind == 0)
+        area = s.u.rectangle.height * s.u.rectangle.width;
+    else if (s.shape_kind == 1)
+        area = PI * pow((s.u.circle.radius), 2);
+    return area;
+}
+
+int main()
+{
+    int comp;
+    printf("Enter 0 for rectangle, 1 for circle: ");
+    scanf("%d", &comp);
+    printf("Area: %d\n", area_calc(comp));
 }
